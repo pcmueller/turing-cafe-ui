@@ -70,11 +70,17 @@ describe('Turing Cafe', () => {
         .should('have.value', 1)      
     })
 
-    it('Should be able to click make a reservation button and see new Res displays', () => {
+    it('Should be able to click "Make A Reservation" button and see new reservation card', () => {
       cy.get('res-btn').click()
 
       cy.get('.resy-container')
         .find('.resy-card').should('have.length', 9)
+      
+      cy.get('.resy-container').find('#9')
+        .get('.name').contains('Pete')
+        .get('.date').contains('06/24')
+        .get('.time').contains('3:00')
+        .get('.number').contains(1)
     })
 
   })
